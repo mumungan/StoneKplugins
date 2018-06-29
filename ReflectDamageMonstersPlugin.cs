@@ -14,7 +14,7 @@ namespace Turbo.Plugins.Stone
 		public bool ShowGroundLabel { get; set; }
 		public bool ShowMiniMapLabel { get; set; }
 		public bool Up { get; set; }
-        public string RFLabel, monsterG2Label, monsterG3Label, monsterG4Label, monsterG1_1, monsterG1_2, monsterG1_3, monsterG1_4, monsterG2_1, monsterG2_2, monsterG2_3, monsterG2_4, 
+		public string RFLabel, monsterG2Label, monsterG3Label, monsterG4Label, monsterG1_1, monsterG1_2, monsterG1_3, monsterG1_4, monsterG2_1, monsterG2_2, monsterG2_3, monsterG2_4, 
 						monsterG3_1, monsterG3_2, monsterG3_3, monsterG3_4, monsterG4_1, monsterG4_2, monsterG4_3, monsterG4_4,
 						RFLabelColour, monsterG2LabelColour, monsterG3LabelColour, monsterG4LabelColour, monsterGroupLabel, monsterGroupColour,
 						affixLabel_1, affixLabel_2, affixLabel_3, affixname_1, affixname_2, affixname_3, affixLabel_1Colour, affixLabel_2Colour, affixLabel_3Colour;						
@@ -38,10 +38,10 @@ namespace Turbo.Plugins.Stone
 			ShowGroundLabel = true; //GroundLabel on, off
 			ShowMiniMapLabel = true; //MiniMapLabel on, off
 			// Offset
-            RFoffset = -2.0f; // Customize ★GroundLabel offset 
-            RadiusOffset = 15.0f; // Customize ★Label minimap offset
+			RFoffset = -2.0f; // Customize ★GroundLabel offset 
+			RadiusOffset = 15.0f; // Customize ★Label minimap offset
 			// Label
-            RFLabel = "★"; // Customize ReflectDamageMonsters' Label + monsterG1 Label
+			RFLabel = "★"; // Customize ReflectDamageMonsters' Label + monsterG1 Label
 			monsterG2Label = "💥"; // Customize Label
 			monsterG3Label = "🔆";
 			monsterG4Label = "☠️";
@@ -49,13 +49,13 @@ namespace Turbo.Plugins.Stone
 			affixLabel_2 = "🛑";
 			affixLabel_3 = "🏴‍";
 			// Label Colour
-			RFLabelColour = "yellow"; // Customize Label colour  //red, green, blue, blueviolet, yellow, orange, black, fuchsia, gold, deeppink. Choose from these colors.
-			monsterG2LabelColour = "red";  
-			monsterG3LabelColour = "green";
+			RFLabelColour = "yellow"; // Customize Label colour  //white, yellow, red, green, blue, blueviolet, orange, black, fuchsia, gold, deeppink. Choose from these colors.
+			monsterG2LabelColour = "yellow";  
+			monsterG3LabelColour = "yellow";
 			monsterG4LabelColour = "blueviolet";
-			affixLabel_1Colour = "yellow"; // // Customize the Label colour of EliteAffix //red, green, blue, blueviolet, yellow, orange, black, fuchsia, gold, deeppink. Choose from these colors.
-			affixLabel_2Colour = "yellow";
-			affixLabel_3Colour = "yellow";
+			affixLabel_1Colour = "white"; // // Customize the Label colour of EliteAffix //white, yellow, red, green, blue, blueviolet, orange, black, fuchsia, gold, deeppink. Choose from these colors.
+			affixLabel_2Colour = "white";
+			affixLabel_3Colour = "white";
 			// Label Size
 			groundLabelsizeG1 = 12.0f; // Customize groundLabelsize
 			groundLabelsizeG2 = 12.0f;
@@ -73,25 +73,25 @@ namespace Turbo.Plugins.Stone
 			mapLabelsizeaffix3 = 8.0f;
 			
 			// Monster Group 1 that wants to label. monsterG1Label uses ReflectDamageMonsters'  label
-            monsterG1_1 = ""; // Insert the Name of the monster. you can use English or your default game language
-            monsterG1_2 = "";  // monsterGroup 1 Label colour
-            monsterG1_3 = "";      
-            monsterG1_4 = "";
+			monsterG1_1 = ""; // Insert the Name of the monster. you can use English or your default game language
+			monsterG1_2 = "";  // monsterGroup 1 Label colour
+			monsterG1_3 = "";      
+			monsterG1_4 = "";
             // Monster Group 2 that wants to label. 
-            monsterG2_1 = "Retching Cadaver";  // monsterGroup 2 Label colour
-            monsterG2_2 = "Deathspitter";
-            monsterG2_3 = "Spewing Horror";
-            monsterG2_4 = "Dust Retcher";
+			monsterG2_1 = "Retching Cadaver";  // monsterGroup 2 Label colour
+			monsterG2_2 = "Deathspitter";
+			monsterG2_3 = "Spewing Horror";
+			monsterG2_4 = "Dust Retcher";
 			// Monster Group 3 that wants to label. 
-            monsterG3_1 = "Tomb Guardian";  // monsterGroup 3 Label colour
-            monsterG3_2 = "Vengeful Summoner";
-            monsterG3_3 = "Returned Summoner";
-            monsterG3_4 = "Tortured Summoner";
+			monsterG3_1 = "Tomb Guardian";  // monsterGroup 3 Label colour
+			monsterG3_2 = "Vengeful Summoner";
+			monsterG3_3 = "Returned Summoner";
+			monsterG3_4 = "Tortured Summoner";
 			// Monster Group 4 that wants to label. 
-            monsterG4_1 = "";  // monsterGroup 4 Label colour
-            monsterG4_2 = "";
-            monsterG4_3 = "";
-            monsterG4_4 = "";
+			monsterG4_1 = "";  // monsterGroup 4 Label colour
+			monsterG4_2 = "";
+			monsterG4_3 = "";
+			monsterG4_4 = "";
 			// Elite Affix Label
 			affixname_1 = "Wormhole"; // Insert the the Affix of Elite. you can use English or your default game language. ex) Wormhole, Juggernaut, Illusionist
 			affixname_2 = "Juggernaut";
@@ -308,6 +308,10 @@ namespace Turbo.Plugins.Stone
 			else if (monsterGroupColour == "deeppink")
 				{				
 					groundfontsize = groundLabelsize; mapfontsize = mapLabelsize; a = 255; r = 255; g = 20; b = 147; return;
+				}
+			else if (monsterGroupColour == "white")
+				{				
+					groundfontsize = groundLabelsize; mapfontsize = mapLabelsize; a = 255; r = 255; g = 255; b = 255; return;
 				}
 		}
     }
