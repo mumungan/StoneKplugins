@@ -15,7 +15,10 @@ namespace Turbo.Plugins.Stone
         public bool showDebuff { get; set; }
         public bool showCCoffMessage { get; set; }
         public bool showDirectionLine { get; set; }
+		public bool showMiniMapLine { get; set; }
+		public bool showGroundLine { get; set; }
         public float CCoffStarttick { get; set; }
+		public float offset { get; set; }
         private bool CCofftimerRunning = false;
 
         public BossCCDebuffplugin()
@@ -30,6 +33,10 @@ namespace Turbo.Plugins.Stone
             showDebuff = true;
             showCCoffMessage = true;
             showDirectionLine = true;
+			showMiniMapLine = true;
+			showGroundLine = true;
+			offset = -2.0f;
+
             BossCCDecorator = new WorldDecoratorCollection(
                 new GroundLabelDecorator(Hud) 
 		    {
@@ -77,21 +84,26 @@ namespace Turbo.Plugins.Stone
             foreach (var monster in monsters)
                 if (monster.Rarity == ActorRarity.Boss)
                 {
-                    if (showDirectionLine && monster.IsOnScreen)
+                    if (showDirectionLine && showMiniMapLine)
                     {
                         BossDirectionLineDecorator.ToggleDecorators<GroundLabelDecorator>(!monster.FloorCoordinate.IsOnScreen()); // do not display ground labels when the marker is on the screen
                         BossDirectionLineDecorator.Paint(layer, null, monster.FloorCoordinate, null);
+					}
+					if (showDirectionLine && showGroundLine)
+					{
+						IScreenCoordinate boss = Hud.Window.CreateScreenCoordinate(monster.ScreenCoordinate.X, monster.ScreenCoordinate.Y);
+						Hud.Render.CreateBrush(192, 255, 255, 55, -1).DrawLine(boss.X, boss.Y + 60, Hud.Game.Me.ScreenCoordinate.X, Hud.Game.Me.ScreenCoordinate.Y + 60, 1.0f);
                     }
                     if ((showCCoffMessage) && (!monster.Frozen && !monster.Chilled && !monster.Slow && !monster.Stunned && !monster.Blind))
                     {
                         var CCofftime = (Hud.Game.CurrentGameTick - CCoffStarttick) / 60.0d;
-                        String CCofftimetext = "CC ¾øÀ½ " + Math.Truncate(CCofftime) + "ÃÊ";
+                        String CCofftimetext = "CC ¾øÀ½ " + Math.Truncate(CCofftime) + "ÃÊ";;
                         if (!CCofftimerRunning)
                         {
                             CCoffStarttick = Hud.Game.CurrentGameTick;
                             CCofftimerRunning = true;
                         }
-                        BossCCDecorator.Paint(layer, monster, monster.FloorCoordinate, CCofftimetext);
+                        BossCCDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), CCofftimetext);
                     }
 
                     if ( (showCCoffMessage) && (monster.Frozen || monster.Chilled || monster.Slow || monster.Stunned || monster.Blind))
@@ -102,25 +114,25 @@ namespace Turbo.Plugins.Stone
                         }
 					}
                     if (monster.Frozen && showCC)
-                    { BossCCDecorator.Paint(layer, monster, monster.FloorCoordinate, "ºù°á"); }
+                    { BossCCDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), "ºù°á"); }
                     if (monster.Chilled && showCC)
-                    { BossCCDecorator.Paint(layer, monster, monster.FloorCoordinate, "¿ÀÇÑ"); }
+                    { BossCCDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), "¿ÀÇÑ"); }
                     if (monster.Slow && showCC)
-                    { BossCCDecorator.Paint(layer, monster, monster.FloorCoordinate, "´À¸²"); }
+                    { BossCCDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), "´À¸²"); }
                     if (monster.Stunned && showCC)
-                    { BossCCDecorator.Paint(layer, monster, monster.FloorCoordinate, "±âÀý"); }
+                    { BossCCDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), "±âÀý"); }
                     if (monster.Blind && showCC)
-                    { BossCCDecorator.Paint(layer, monster, monster.FloorCoordinate, "½Ç¸í"); }
+                    { BossCCDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), "½Ç¸í"); }
                     if (monster.Locust && showDebuff)
-                    { BossDebuffDecorator.Paint(layer, monster, monster.FloorCoordinate, "¸Þ¶Ñ±â"); }
+                    { BossDebuffDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), "¸Þ¶Ñ±â"); }
                     if (monster.Haunted && showDebuff)
-                    { BossDebuffDecorator.Paint(layer, monster, monster.FloorCoordinate, "È¥Ãâ"); }
+                    { BossDebuffDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), "È¥Ãâ"); }
                     if (monster.Palmed && showDebuff)
-                    { BossDebuffDecorator.Paint(layer, monster, monster.FloorCoordinate, "ÆøÀå"); }
+                    { BossDebuffDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), "ÆøÀå"); }
                     if (monster.MarkedForDeath && showDebuff)
-                    { BossDebuffDecorator.Paint(layer, monster, monster.FloorCoordinate, "Á×Ç¥"); }
+                    { BossDebuffDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), "Á×Ç¥"); }
                     if (monster.Strongarmed && showDebuff)
-                    { BossDebuffDecorator.Paint(layer, monster, monster.FloorCoordinate, "ÆÈ¾¾¸§"); }
+                    { BossDebuffDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), "ÆÈ¾¾¸§"); }
 
                 }
         }
