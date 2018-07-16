@@ -113,26 +113,57 @@ namespace Turbo.Plugins.Stone
                             CCofftimerRunning = false;
                         }
 					}
+					string data1 = ""; 
                     if (monster.Frozen && showCC)
-                    { BossCCDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), "ºù°á"); }
+                    { 
+					data1 += "ºù°á";
+					BossCCDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), data1); 
+					}
                     if (monster.Chilled && showCC)
-                    { BossCCDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), "¿ÀÇÑ"); }
+                    { 
+					data1 += " ¿ÀÇÑ";
+					BossCCDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), data1); 
+					}
                     if (monster.Slow && showCC)
-                    { BossCCDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), "´À¸²"); }
+                    {
+					data1 += " ´À¸²";
+					BossCCDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), data1); 
+					}
                     if (monster.Stunned && showCC)
-                    { BossCCDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), "±âÀý"); }
+                    {
+					data1 += " ±âÀý";
+					BossCCDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), data1); 
+					}
                     if (monster.Blind && showCC)
-                    { BossCCDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), "½Ç¸í"); }
+                    {
+					data1 += " ½Ç¸í";
+					BossCCDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), data1); 
+					}
                     if (monster.Locust && showDebuff)
-                    { BossDebuffDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), "¸Þ¶Ñ±â"); }
+                    { 
+					data1 += " ¸Þ¶Ñ±â";
+					BossDebuffDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), data1); 
+					}
                     if (monster.Haunted && showDebuff)
-                    { BossDebuffDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), "È¥Ãâ"); }
+                    { 
+					data1 += " È¥Ãâ";
+					BossDebuffDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), data1); 
+					}
                     if (monster.Palmed && showDebuff)
-                    { BossDebuffDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), "ÆøÀå"); }
+                    { 
+					data1 += " ÆøÀå";
+					BossDebuffDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), data1); 
+					}
                     if (monster.MarkedForDeath && showDebuff)
-                    { BossDebuffDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), "Á×Ç¥"); }
+                    { 
+					data1 += " Á×Ç¥";
+					BossDebuffDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), data1); 
+					}
                     if (monster.Strongarmed && showDebuff)
-                    { BossDebuffDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), "ÆÈ¾¾¸§"); }
+                    { 
+					data1 += " ÆÈ¾¾¸§";
+					BossDebuffDecorator.Paint(layer, monster, monster.FloorCoordinate.Offset(0, 0, offset), data1); 
+					}
 
                 }
         }
