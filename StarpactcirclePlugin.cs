@@ -74,7 +74,7 @@ namespace Turbo.Plugins.Stone
             {
                     switch (actor.SnoActor.Sno)
                     {
-                        case 217142:
+                        case (ActorSnoEnum)217142: //case ActorSnoEnum._wizard_meteor_pending_cost:
                             meteorcircleDeco.Paint(layer, actor, actor.FloorCoordinate, null);
                             if (Hud.Game.Me.HeroClassDefinition.HeroClass != HeroClass.Wizard)
                             {

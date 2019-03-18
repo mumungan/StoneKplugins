@@ -119,7 +119,7 @@ namespace Turbo.Plugins.Stone
             {
                     switch (actor.SnoActor.Sno)
                     {
-                        case 217142:
+                        case (ActorSnoEnum)217142:
                             if (Hud.Game.Me.HeroClassDefinition.HeroClass == HeroClass.Wizard)
                             {
                                 if (Hud.Game.Me.HeroClassDefinition.HeroClass == HeroClass.Wizard && me.Stats.ResourceCurArcane < 5)
